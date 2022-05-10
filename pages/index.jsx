@@ -7,6 +7,8 @@ import Featured from "../component/Featured"
 import PizzaList from "../component/PizzaList"
 import styles from "../styles/Home.module.css"
 import { useState } from "react"
+import dbConnect from "../util/mongo"
+import Product from "../models/Product"
 
 const Index = ({ pizzaList = [], admin }) => {
     const [close, setClose] = useState(true)
@@ -33,10 +35,12 @@ export const getServerSideProps = async (ctx) => {
         admin = true
     }
 
-    const res = await axios.get(`https://pizza-next.herokuapp.com/api/products`)
+    // const res = await axios.get(`http://localhost:3000/api/products`)
+    await dbConnect()
+    const res = await Product.find()
     return {
         props: {
-            pizzaList: res.data,
+            pizzaList: res,
             admin,
         },
     }
