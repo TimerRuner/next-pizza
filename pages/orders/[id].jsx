@@ -144,7 +144,7 @@ const Order = ({ order }) => {
 
 export const getServerSideProps = async ({ params }) => {
     const res = await axios.get(
-        `https://next-pizza-two.vercel.app/api/orders/${params.id}`
+        `https://pizza-next.herokuapp.com/api/orders/${params.id}`
     )
     return {
         props: { order: res.data },

@@ -99,7 +99,7 @@ const Product = ({ pizza }) => {
 
 export const getServerSideProps = async ({ params }) => {
     const res = await axios.get(
-        `https://next-pizza-two.vercel.app/api/products/${params.id}`
+        `https://pizza-next.herokuapp.com/api/products/${params.id}`
     )
     return {
         props: {

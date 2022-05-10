@@ -11,7 +11,7 @@ const Admin = ({ orders, products }) => {
     const handleDelete = async (id) => {
         try {
             const res = await axios.delete(
-                "https://next-pizza-two.vercel.app/api/products/" + id
+                "https://pizza-next.herokuapp.com/api/products/" + id
             )
             setPizzaList(pizzaList.filter((pizza) => pizza._id !== id))
         } catch (err) {
@@ -25,7 +25,7 @@ const Admin = ({ orders, products }) => {
 
         try {
             const res = await axios.put(
-                "https://next-pizza-two.vercel.app/api/orders/" + id,
+                "https://pizza-next.herokuapp.com/api/orders/" + id,
                 {
                     status:
                         currentStatus >= 2 ? currentStatus : currentStatus + 1,
@@ -139,10 +139,10 @@ export const getServerSideProps = async (ctx) => {
         }
     }
     const productRes = await axios.get(
-        "https://next-pizza-two.vercel.app/api/products"
+        "https://pizza-next.herokuapp.com/api/products"
     )
     const orderRes = await axios.get(
-        "https://next-pizza-two.vercel.app/api/orders"
+        "https://pizza-next.herokuapp.com/api/orders"
     )
 
     return {
