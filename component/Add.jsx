@@ -36,7 +36,6 @@ const Add = ({ setClose }) => {
                 "https://api.cloudinary.com/v1_1/pizza-next/image/upload",
                 data
             )
-            console.log(uploadRes)
             const { url } = uploadRes.data
             const newProduct = {
                 title,
