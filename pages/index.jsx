@@ -8,7 +8,7 @@ import PizzaList from "../component/PizzaList"
 import styles from "../styles/Home.module.css"
 import { useState } from "react"
 
-const Index = ({ pizzaList, admin }) => {
+const Index = ({ pizzaList = [], admin }) => {
     const [close, setClose] = useState(true)
 
     return (
