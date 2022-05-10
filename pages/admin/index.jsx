@@ -11,7 +11,7 @@ const Admin = ({ orders, products }) => {
     const handleDelete = async (id) => {
         try {
             const res = await axios.delete(
-                "https://pizza-next.herokuapp.com/api/products/" + id
+                "http://localhost:3000/api/products/" + id
             )
             setPizzaList(pizzaList.filter((pizza) => pizza._id !== id))
         } catch (err) {
@@ -25,7 +25,7 @@ const Admin = ({ orders, products }) => {
 
         try {
             const res = await axios.put(
-                "https://pizza-next.herokuapp.com/api/orders/" + id,
+                "http://localhost:3000/api/orders/" + id,
                 {
                     status:
                         currentStatus >= 2 ? currentStatus : currentStatus + 1,
@@ -138,12 +138,8 @@ export const getServerSideProps = async (ctx) => {
             },
         }
     }
-    const productRes = await axios.get(
-        "https://pizza-next.herokuapp.com/api/products"
-    )
-    const orderRes = await axios.get(
-        "https://pizza-next.herokuapp.com/api/orders"
-    )
+    const productRes = await axios.get("http://localhost:3000/api/products")
+    const orderRes = await axios.get("http://localhost:3000/api/orders")
 
     return {
         props: {

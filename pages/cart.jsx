@@ -25,7 +25,7 @@ const Cart = () => {
     const createOrder = async (data) => {
         try {
             const res = await axios.post(
-                "https://pizza-next.herokuapp.com/api/orders",
+                "http://localhost:3000/api/orders",
                 data
             )
             console.log(res)
