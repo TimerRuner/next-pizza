@@ -1,8 +1,10 @@
 import styles from "../../styles/Order.module.css"
 import Image from "next/image"
 import axios from "axios"
+import dbConnect from "../../util/mongo"
+import Order from "../../models/Order"
 
-const Order = ({ order }) => {
+const OrderPage = ({ order }) => {
     const status = order.status
 
     const statusClass = (index) => {
@@ -143,10 +145,13 @@ const Order = ({ order }) => {
 }
 
 export const getServerSideProps = async ({ params }) => {
-    const res = await axios.get(`http://localhost:3000/api/orders/${params.id}`)
+    // const res = await axios.get(`http://localhost:3000/api/orders/${params.id}`)
+    await dbConnect()
+    const res = await Order.findById(params.id)
+    const resj = JSON.parse(JSON.stringify(res))
     return {
-        props: { order: res.data },
+        props: { order: resj },
     }
 }
 
-export default Order
+export default OrderPage

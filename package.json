@@ -2,9 +2,7 @@
     "name": "next-pizza",
     "version": "0.1.0",
     "private": true,
-    "engines": {
-        "node": "16.x"
-    },
+    "main": "index.jsx",
     "scripts": {
         "dev": "next dev",
         "build": "next build",

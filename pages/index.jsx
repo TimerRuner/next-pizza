@@ -34,14 +34,14 @@ export const getServerSideProps = async (ctx) => {
     if (myCookie.token === process.env.TOKEN) {
         admin = true
     }
-    console.log(process.env.MONGO_URL)
+
     // const res = await axios.get(`http://localhost:3000/api/products`)
-    // await dbConnect()
-    // const res = await Product.find()
-    // const resj = JSON.parse(JSON.stringify(res))
+    await dbConnect()
+    const res = await Product.find()
+    const resj = JSON.parse(JSON.stringify(res))
     return {
         props: {
-            pizzaList: [], //resj
+            pizzaList: resj,
             admin,
         },
     }
