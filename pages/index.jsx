@@ -35,13 +35,13 @@ export const getServerSideProps = async (ctx) => {
         admin = true
     }
 
-    // const res = await axios.get(`http://localhost:3000/api/products`)
-    await dbConnect()
-    const res = await Product.find()
-    const resj = JSON.parse(JSON.stringify(res))
+    const res = await axios.get(`/api/products`)
+    // await dbConnect()
+    // const res = await Product.find()
+    // const resj = JSON.parse(JSON.stringify(res))
     return {
         props: {
-            pizzaList: resj, //res
+            pizzaList: res.data, //res
             admin,
         },
     }
